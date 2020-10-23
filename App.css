@@ -1,0 +1,11 @@
+.body {
+  
+  margin: auto;
+  padding: auto;
+  display: inline-block;
+}
+
+input {
+  display: inline-block;
+  font-size: 22px;
+}

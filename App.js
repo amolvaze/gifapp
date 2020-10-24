@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+//import { Link } from "react-router-dom";
 import './App.css';
 
 function useGiphy(query) {
@@ -13,9 +14,9 @@ function useGiphy(query) {
           `https://api.giphy.com/v1/gifs/search?api_key=OfReL2iJQrk8Uj2cyHSwDXNOdICuDu9G&q=${query}&limit=100&offset=0&rating=G&lang=en`
         );
         const json = await response.json();
-
+        //console.log(json.data.map(item => {return item.images.preview_gif.url} ))
         setResults(
-          json.data.map(item => {
+            json.data.map(item => {
             return item.images.preview.mp4;
           })
         );
@@ -32,6 +33,11 @@ function useGiphy(query) {
   return [results, loading];
 }
 
+const imageClick = (url) => {
+  //console.log('clicked ' +id);
+  //window.location = url;
+  window.open(url,'_blank');
+}
 
 export default function AsyncHooks() {
   const [search, setSearch] = useState('');
@@ -87,7 +93,7 @@ export default function AsyncHooks() {
         loading ? (
         <h1>Please wait...loading gifs!</h1>
       ) : (
-        results.map(item => <video style = {videoStyle} autoPlay loop key={item} src={item} />)
+        results.map((item, id) => <video style = {videoStyle} autoPlay loop key={item} src={item} onClick={()=> imageClick(item.id)}/>)
       )}
     </div>
   );

@@ -51,6 +51,18 @@ export default function AsyncHooks() {
     cursor: "pointer"
   };
 
+  const videoStyle = {
+    cursor: "pointer",
+    width:  "200px",
+    backgroundColor: "violet",
+    height: "200px",
+    padding:"10px 20px 10px 1em",
+    marginLeft: "5px",
+    border: "2px dotted blue",
+    display: "inline-block",
+    align: "center"
+  };
+
   return (
     
     <div>
@@ -75,7 +87,7 @@ export default function AsyncHooks() {
         loading ? (
         <h1>Please wait...loading gifs!</h1>
       ) : (
-        results.map(item => <video autoPlay loop key={item} src={item} />)
+        results.map(item => <video style = {videoStyle} autoPlay loop key={item} src={item} />)
       )}
     </div>
   );

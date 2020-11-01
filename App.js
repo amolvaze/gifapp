@@ -5,7 +5,6 @@ import './App.css';
 function useGiphy(query) {
   const [results, setResults] = useState([]);
   const [loading, setLoading] = useState(false);
-
   useEffect(() => {
     async function fetchData() {
       try {
@@ -30,6 +29,7 @@ function useGiphy(query) {
     }
   }, [query]);
 
+
   return [results, loading];
 }
 
@@ -49,7 +49,7 @@ export default function AsyncHooks() {
     backgroundColor: "blue",
     padding: "10px",
     margin: "10px",
-    font: " 15px",
+    font: " 50px",
     fontFamily: "verdana",
     fontWeight: "bold",
     height: "50px",
@@ -70,9 +70,9 @@ export default function AsyncHooks() {
   };
 
   return (
-    
+   
     <div>
-      <h1>Search Your Gifs Now!</h1>
+      <h1 align= "center">Search Your Gifs Now!</h1>
       <form
         onSubmit={e => {
           e.preventDefault();
@@ -90,10 +90,15 @@ export default function AsyncHooks() {
       </form>
       <br />
       {
-        loading ? (
-        <h1>Please wait...loading gifs!</h1>
-      ) : (
-        results.map((item, id) => <video style = {videoStyle} autoPlay loop key={item} src={item} onClick={()=> imageClick(item.id)}/>)
+        results.length === 0 &&  (
+          <h1><center>No gifs are found!</center></h1>
+        ) 
+      }
+      {
+          loading ? (
+         <h1>Please wait...loading gifs!</h1>
+       ) : (
+      results.map((item, id) => <video style = {videoStyle} autoPlay loop key={item} src={item} onClick={()=> imageClick(item.id)}/>)
       )}
     </div>
   );

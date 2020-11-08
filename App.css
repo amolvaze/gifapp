@@ -2,7 +2,7 @@ body {
   background-color: rgb(245, 217, 240);
   margin: auto;
   padding: auto;
-  display: inline-block;
+  display: inline-flexbox;
 }
 
 input {
